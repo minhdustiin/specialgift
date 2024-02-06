@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: lightpink; /* Add this line */
+    }
+
+    #valentineContainer {
+      position: fixed;
+      top: 50px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 1.5em;
+      font-family: 'Patrick Hand', cursive;
+      z-index: 1;
+    }
+
+    button {
+    color: pink;
+    font-size: 3em;
+    border-radius: 10px;
+    border: 2px solid #999;
+    transition: background-color 0.3s, transform 0.3s; /* Add this line for the animation */
+  }
+
+  button:hover {
+    background-color: #eee; /* Add this line for a subtle background change on hover */
+  }
+
+  button:active {
+    transform: scale(0.95); /* Add this line for a scaling effect when the button is clicked */
+  }
+
+  #messageLabel {
+      display: none;
+      color: black;
+      position: fixed;
+      font-size: 1.5em;
+      margin-top: 20px;
+      top: 100px;
+      right: 550px;
+    }
+
+  #hiddenButton {
+      display: none;
+      opacity: 0; /* Initially invisible */
+      font-size: 1em;
+
+    }
+
+  #hiddenButton:hover {
+      opacity: 1; /* Make visible on hover */
+    }
+  </style>
+  
+  <title>Button Resizer</title>
+</head>
+<body>
+
+  <div id="valentineContainer">
+    Will you be my valentine kami?
+  </div>
+
+  <div id="buttonContainer">
+    <button id="yesButton" onclick="whoopie()">Yes</button>
+    <button onclick="increaseNoSize()">No</button>
+  </div>
+ 
+  <label id="whoopieLabel" style="display:none; font-family: 'Patrick Hand', cursive;">Whoopie! Dusty Is Now Officially Your Valentine!! <br>But Now Find The Secret Hidden Button On This Page Teehee..</label>
+
+  <div id="messageLabel">Ummm!!! Kami! Haha Maybeee You Should Try Clicking Dat Yes Button...</div>
+
+  <button style="position: fixed; top: 100px; right: 10px;" id="hiddenButton" onmouseover="showMessage()" onclick="navigateToTest()">YOUCH! </button>
+
+
+  <script>
+    var clickCounter = 0;
+
+    function whoopie() {
+      var buttonContainer = document.getElementById("buttonContainer");
+      var whoopieLabel = document.getElementById("whoopieLabel");
+      var valentineContainer = document.getElementById("valentineContainer");
+      var hiddenButton = document.getElementById("hiddenButton");
+      var messageLabel = document.getElementById("messageLabel");
+      
+
+      // Hide buttons
+      buttonContainer.style.display = 'none';
+
+      valentineContainer.style.display = 'none';
+
+      messageLabel.style.display = 'none';
+      // Show label
+      whoopieLabel.style.display = 'block';
+
+      hiddenButton.style.display = 'block';
+
+      
+      
+
+    
+    
+    }
+
+    function increaseNoSize() {
+      var yesButton = document.getElementById("yesButton");
+      var messageLabel = document.getElementById("messageLabel");
+      var currentSize = window.getComputedStyle(yesButton, null).getPropertyValue('font-size');
+      var newSize = parseInt(currentSize) + 5;
+      yesButton.style.fontSize = newSize + 'px';
+
+
+      clickCounter++;
+      if (clickCounter >= 20) {
+        messageLabel.style.display = 'block';
+      }
+
+    }
+
+    function showMessage() {
+      var messageLabel = document.getElementById("messageLabel");
+      messageLabel.innerHTML = "You found me!";
+    }
+
+    function navigateToTest() {
+      window.location.href = "https://www.bing.com/search?pglt=43&q=valentien+day+fonts&cvid=45bb0152771043e1b068fc2ebdc3a733&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgyMjUyajBqMagCALACAA&FORM=ANNTA1&PC=LCTS";
+    }
+  </script>
+
+</body>
+</html>
